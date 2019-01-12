@@ -13,6 +13,7 @@
 			background-color: #303641;
 		    margin: 0;
 		    padding: 0;
+			width: 100vw;
 		    font-family: 'Raleway', sans-serif;
 		    color: #F2F2F2;
 		}
@@ -23,7 +24,6 @@
 		    top: 20%;
 		    margin: auto;
 		    width: 340px;
-		    height: 760px;
 		    border-radius: 0.35em;
 		    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
 		    text-align: center;
@@ -34,7 +34,7 @@
 		    position: relative;
 		    top: 20%;
 		    margin: auto;
-		    width: 340px;
+		    width: 100%;
 		    height: 480px;
 		    border-radius: 0.35em;
 		    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
@@ -60,7 +60,7 @@
 		    margin: auto;
 		    width: 240px;
 		    border-radius: 4px;
-		    background-color: #373b3d;
+		    background-color: #fff;
 		    padding: 8px 0px;
 		    margin-top: 15px;
 		}
@@ -77,13 +77,22 @@
 		    cursor: pointer;
 		}
 
-		input[type=text] {
-		    color: #949494;
+		select, textarea, input[type=text] {
+		    color: #fff;
 		    margin: 0;
 		    background-color: #373b3d;
 		    border: 1px solid #373b3d;
 		    padding: 6px 0px;
+			margin: 6px 0px;
 		    border-radius: 3px;
+		}
+
+		button {
+			color: #fff;
+			width: 100%;
+			background-color: #373b3d;
+		    border: 1px solid #373b3d;
+			padding: 6px 0px;
 		}
 
 		input[type=text]:focus {
@@ -188,8 +197,6 @@
 		.clearfix {
 		    clear: both;
 		}
-
-
     </style>
 </head>
 
@@ -204,33 +211,26 @@
         </div>
         <h4>Upload CV</h4>
         <p style="padding:12px">
-        <input type="file" accept=".pdf" id="file" name="file"/>
+        <input ng-model="resume" type="text" placeholder="URL to your resume"/>
         </p>
-        <button ng-click="addCV()">Add</button>
-        
-        </br></br>
         
         <h4>Upload Profile Picture</h4>
         <p style="padding:12px">
-        <input type="file" accept=".jpg, .jpeg, .gif, .png" id="file" name="file"/>
-        </p>
-        <button ng-click="addPic()">Add</button>
+        <input ng-model="picture" type="text" placeholder="URL to your profile picture"/>
+		
+	</p>
 
         <h4>Skills</h4>
-        <textArea id="skills" name="skills" style="width:300px; height:180px; margin-bottom: 5px;" ng-model="skills"></textArea>
-        </br>
-        <h4>Availability</h4>
-        <input type="radio" name="availability">
-        <label>Full Time Seasonal</label></br>
-        <input type="radio" name="availability">
-        <label>Part Time Seasonal</label></br>
-        <input type="radio" name="availability">
-        <label>Full Time</label></br>
-        <input type="radio" name="availability">
-        <label>Part Time</label></br>
-        <input type="submit" style="margin-top: 7px">
-
-    
+			<textArea id="skills" name="skills" ng-model="skills"></textArea>
+			
+		<h4>Availability</h4>
+		<select ng-model="availability">
+			<option value="FTS">Full Time Seasonal</option>
+			<option value="PTS">Part Time Seasonal</option>
+			<option value="FT">Full Time</option>
+			<option value="PT">Part Time</option>
+		</select> <br />
+        <button ng-click="updateProfile()" type="button" style="margin-top: 7px">Update Profile</button>
     </div>
 	</div>
 </body>

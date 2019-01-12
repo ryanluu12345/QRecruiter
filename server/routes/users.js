@@ -8,8 +8,9 @@ router.post('/create', function(req, res) {
   UserController.createUser(username, pass, email, phone, res);
 });
 
-router.put('/updateProfile/:id', function(req, res) {
-  UserController.updateProfile(req.params.id, "resume", "profilepic", "skills", "availability", res);
+router.post('/updateProfile/:id', function(req, res) {
+  const { skills, availability, picture, resume } = req.body;
+  UserController.updateProfile(req.params.id, resume, picture, skills, availability, res);
 });
 
 router.get('/getAll', function(req, res) {

@@ -27,13 +27,25 @@ app
           user
         });
       },
+      updateUserProfile: function(
+        skills, 
+        availability,
+        picture,
+        resume, 
+        userId) {
+        return $http.post(usersRoute + '/updateProfile/' + userId, {
+          skills: skills,
+          availability: availability,
+          picture: picture,
+          resume: resume,
+        });
+      }
 
       /* Put the name of the functions on the left and define the functions on the right */
 
     };
   }
-]);    
-    
+]);  
 
 /* Controller for the recruiter page */
 app.controller('RecruiterCtrl', ['$scope', 'UserService', function($scope, UserService){
@@ -47,19 +59,38 @@ app.controller('RecruiterCtrl', ['$scope', 'UserService', function($scope, UserS
 
 /* Controller for the user page */
 app.controller('UserCtrl', ['$scope', 'UserService', function($scope, UserService){
-  $scope.username = null;
-  $scope.skills = null;
+  $scope.username = '';
+  $scope.skills = '';
+  $scope.availability = '';
+  $scope.picture = '';
+  $scope.resume = '';
 
-  $scope.add = function() {
-    var f = document.getElementById('file').files[0],
-        r = new FileReader();
+  $scope.$watch('skills', function(skills) {
+    $scope.skills = skills;
+  });
 
-    r.onloadend = function(e) {
-      var data = e.target.result;
-      //send your binary data via $http or $resource or do anything else with it
+  $scope.$watch('picture', function(picture) {
+    $scope.picture = picture;
+  });
+
+  $scope.$watch('resume', function(resume) {
+    $scope.resume = resume;
+  });
+
+  $scope.updateProfile = function() {
+    $scope.studentId = 123;
+    if (localStorage.hasOwnProperty("studentId")) {
+      $scope.studentId = localStorage.getItem("studentId")
     }
-
-    r.readAsBinaryString(f);
+    UserService.updateUserProfile(
+      $scope.skills, 
+      $scope.availability,
+      $scope.picture,
+      $scope.resume,
+      $scope.studentId)
+      .success(response => {
+        swal('Successfully updated profile!', 'Welcome ' + response.name, 'success');
+      })
   }
 }]);    
 
@@ -97,6 +128,7 @@ function($scope, $location, UserService){
       .success(function(response) {
         swal("Profile Created!", "You now have an account with QRecruiter!", "success");
         localStorage.setItem("studentId", response._id);
+        localStorage.setItem("name", response.name);
         $location.url('/user');
       });
   }
@@ -111,5 +143,6 @@ app.controller('LoginCtrl', ['$scope', 'UserService', function($scope, UserServi
     .success(function(data) {
       $scope.username = null;
     });
-}]);    
+}]);   
+
 
