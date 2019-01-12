@@ -28,7 +28,7 @@
 		    top: 20%;
 		    margin: auto;
 		    width: 340px;
-		    height: 500px;
+		    height: 570px;
 		    border-radius: 0.35em;
 		    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
 		    text-align: center;
@@ -108,6 +108,20 @@
 		input[type=email]:focus {
 		    border: 1px solid #373b3d;
 		}
+
+		input[type=tel] {
+		    color: #949494;
+		    margin: 0;
+		    background-color: #373b3d;
+		    border: 1px solid #373b3d;
+		    padding: 6px 0px;
+		    border-radius: 3px;
+		}
+
+		input[type=tel]:focus {
+		    border: 1px solid #373b3d;
+		}
+
 
 		.forgot-password {
 		    position: relative;
@@ -211,6 +225,13 @@
                 <input id="email" placeholder="Email" type="email" required class="validate" autocomplete="off" ng-model="email">
             </div>
 
+            <div class="input">
+                <div class="input-addon">
+                    <i class="material-icons">phone</i>
+                </div>
+                <input id="phone" placeholder="+01112223333" type="tel" required class="validate" autocomplete="off" ng-model="phone">
+            </div>
+
             <div class="clearfix"></div>
 
             <div class="input">
@@ -245,12 +266,13 @@
             Do you already have an account?
             <a href="#"><button id="register-link">Log In here</button></a>
         </div>
-        <!--
+        
         <h1>Testing Values</h1>
         <p>Email: {{email}}</p>
+        <p>Phone: {{phone}}</p>
         <p>User: {{username}}</p>
         <p>Password: {{pass}}</p>
-		-->
+		
     </div>
 	</div>
 </body>

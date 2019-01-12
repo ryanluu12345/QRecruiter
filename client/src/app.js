@@ -71,7 +71,6 @@ app.controller('SignUpCtrl', ['$scope', 'UserService', function($scope, UserServ
   $scope.pass = null;
   $scope.eMail = null;
   $scope.phone = null;
-  $scope.linkedin = null;
   UserService.getUser()
     .success(function(data) {
       $scope.user = data;
