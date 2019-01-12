@@ -4,7 +4,8 @@ const UserController = require('../controllers/UserController');
 
 /* Creates a new user */
 router.post('/create', function(req, res) {
-  UserController.createUser("Ryan","pass","email", "phonenumber", res);
+  const { username, pass, email, phone } = req.body.user;
+  UserController.createUser(username, pass, email, phone, res);
 });
 
 router.put('/updateProfile/:id', function(req, res) {

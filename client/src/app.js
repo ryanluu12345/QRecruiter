@@ -16,14 +16,17 @@ app
 
   function($http){
   
-    var users = '/api/v1/users';
+    var usersRoute = '/api/v1/users';
   
     return {
       getUser: function() {
-        return $http.get(users);
-      }
-
-
+        return $http.get(usersRoute);
+      },
+      createUser: function(user) {
+        return $http.post(usersRoute + "/create", {
+          user
+        });
+      },
 
       /* Put the name of the functions on the left and define the functions on the right */
 
@@ -46,11 +49,6 @@ app.controller('RecruiterCtrl', ['$scope', 'UserService', function($scope, UserS
 app.controller('UserCtrl', ['$scope', 'UserService', function($scope, UserService){
   $scope.username = null;
   $scope.skills = null;
-  UserService.getUser()
-    .success(function(data) {
-      $scope.username = "Ken";
-      $scope.skills = null;
-    });
 
   $scope.add = function() {
     var f = document.getElementById('file').files[0],
@@ -66,15 +64,43 @@ app.controller('UserCtrl', ['$scope', 'UserService', function($scope, UserServic
 }]);    
 
 /* Controller for the signup page */
-app.controller('SignUpCtrl', ['$scope', 'UserService', function($scope, UserService){
-  $scope.username = null;
-  $scope.pass = null;
-  $scope.eMail = null;
-  $scope.phone = null;
-  UserService.getUser()
-    .success(function(data) {
-      $scope.user = data;
-    });
+app.controller('SignUpCtrl', ['$scope',
+'$location', 
+'UserService', 
+function($scope, $location, UserService){
+  $scope.user = {
+    username: '',
+    pass: '',
+    email: '',
+    phone: '',
+  };
+
+  $scope.$watch('username', function(name) {
+    $scope.user.username = name;
+  });
+
+  $scope.$watch('pass', function(pass) {
+    $scope.user.pass = pass;
+  });
+
+  $scope.$watch('email', function(email) {
+    $scope.user.email = email;
+  });
+
+  $scope.$watch('phone', function(phone) {
+    $scope.user.phone = phone;
+  })
+
+  $scope.createUser = function() {
+    UserService
+      .createUser($scope.user)
+      .success(function(response) {
+        swal("Profile Created!", "You now have an account with QRecruiter!", "success");
+        localStorage.setItem("studentId", response._id);
+        $location.url('/user');
+      });
+  }
+
 }]);    
 
 /* Controller for the login page */
