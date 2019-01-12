@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://admin:password12345@ds123173.mlab.com:23173/qrecruiter')
 
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');

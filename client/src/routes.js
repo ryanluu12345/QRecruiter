@@ -5,8 +5,6 @@ angular.module('reg')
     '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-      $urlRouterProvider.otherwise('/404');
-
       const recruiterState = {
         name: 'recruiter',
         url: '/recruiter',
