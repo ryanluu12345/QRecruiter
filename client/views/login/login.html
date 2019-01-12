@@ -30,18 +30,6 @@
 		    text-align: center;
 		}
 
-		#container-register {
-		    background-color: #1D1F20;
-		    position: relative;
-		    top: 20%;
-		    margin: auto;
-		    width: 340px;
-		    height: 480px;
-		    border-radius: 0.35em;
-		    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-		    text-align: center;
-		}
-
 		#title {
 		    position: relative;
 		    background-color: #1A1C1D;
@@ -205,7 +193,7 @@
 </head>
 
 <body>
-	<div ng-controller="LoginCtrl"> <!--{{user}}-->
+	<div ng-controller="LoginCtrl">
     <div id="container-login">
         <div id="title">
             <i class="material-icons lock">lock</i> Login
@@ -216,7 +204,7 @@
                 <div class="input-addon">
                     <i class="material-icons">face</i>
                 </div>
-                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
+                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off" ng-model="username">
             </div>
 
             <div class="clearfix"></div>
@@ -225,7 +213,7 @@
                 <div class="input-addon">
                     <i class="material-icons">vpn_key</i>
                 </div>
-                <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off">
+                <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off" ng-model="password">
             </div>
 
             <div class="remember-me">

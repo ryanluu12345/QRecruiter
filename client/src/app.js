@@ -13,6 +13,7 @@ app
 app
   .factory('UserService', [
   '$http',
+
   function($http){
   
     var users = '/api/v1/users';
@@ -22,7 +23,7 @@ app
         return $http.get(users);
       }
 
-      
+
 
       /* Put the name of the functions on the left and define the functions on the right */
 
@@ -44,10 +45,24 @@ app.controller('RecruiterCtrl', ['$scope', 'UserService', function($scope, UserS
 /* Controller for the user page */
 app.controller('UserCtrl', ['$scope', 'UserService', function($scope, UserService){
   $scope.username = null;
+  $scope.skills = null;
   UserService.getUser()
     .success(function(data) {
-      $scope.user = data;
+      $scope.username = "Ken";
+      $scope.skills = null;
     });
+
+  $scope.add = function() {
+    var f = document.getElementById('file').files[0],
+        r = new FileReader();
+
+    r.onloadend = function(e) {
+      var data = e.target.result;
+      //send your binary data via $http or $resource or do anything else with it
+    }
+
+    r.readAsBinaryString(f);
+  }
 }]);    
 
 /* Controller for the signup page */
@@ -69,9 +84,7 @@ app.controller('LoginCtrl', ['$scope', 'UserService', function($scope, UserServi
   $scope.pasword = null; 
   UserService.getUser()
     .success(function(data) {
-      $scope.username = data;
+      $scope.username = null;
     });
 }]);    
-
-
 

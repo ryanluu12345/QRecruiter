@@ -20,8 +20,24 @@
 </head>
 
 <body>
+	.
     <div ng-controller="RecruiterCtrl">
-  		{{user}}
+  		<div ng-controller="BoardPageCtrl">
+			<div id="board­-page">
+  <div ng­-repeat="list in lists" class="list">
+    <input class="list­-name" ng­-model="list.name"/>
+    <div class="list­-content">
+      <div ng­-repeat="ticket in list.tickets" class="ticket">
+        <input class="ticket­-title" ng­-model="ticket.title"/>
+      </div>
+    </div>
+    <button class="add­-ticket"> Add Ticket </button>
+  </div>
+</div>
+        </div>
+    </div>
+</div>
+
 	</div>
 </body>
 
