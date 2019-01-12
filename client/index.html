@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="reg">
+	<head>
+		<!-- META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+		<title>QRecruiter</title>
+
+		<!-- SCROLLS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+		<!-- SPELLS -->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.21/angular-ui-router.min.js"></script>
+
+		<script src="src/app.js"></script> <!-- load our main application -->
+		<script src="src/routes.js"></script>
+	</head>
+
+  <body>
+    <a ui-sref="recruiter" ui-sref-active="active">Recruiter</a>
+		<a ui-sref="user" ui-sref-active="active">User</a>
+		<a ui-sref="signup" ui-sref-active="active">Signup</a>
+		<a ui-sref="login" ui-sref-active="active">Login</a>
+    <ui-view></ui-view>
+  </body>
+</html>
