@@ -13,29 +13,25 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  phoneNumber: {
-    type: String,
-    required: true,
-  },
-  linkedIn: {
-    type: String,
-    required: true,
-  },
-  availability: {
+  phone: {
     type: String,
     required: true,
   },
   resume: {
     type: String,
-    required: true,
+    default: '',
   },
   picture: {
     type: String,
     default: '',
   },
   skills: {
-    type: Array,
-    default: [],
+    type: String,
+    default: '',
+  },
+  availability: {
+    type: String,
+    default: '',
   },
   qrLink: {
     type: String,

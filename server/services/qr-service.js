@@ -11,7 +11,6 @@ function makeQRCode(userId) {
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_KEY,
   })
-
   const picLink = 'pic.png';
   var qr_svg = qr.image(userId, { type: 'png' });
   qr_svg.pipe(require('fs').createWriteStream(picLink));
@@ -24,17 +23,16 @@ function makeQRCode(userId) {
     ACL: 'public-read-write',
   };
 
-  s3.upload(params, function (err, data) {
-    //handle error
-    if (err) {
-      console.log("Error", err);
-    }
-
-    //success
-    if (data) {
-      return data.location;
-    }
-  });
+  return (   
+  new Promise(function(resolve, reject) {
+    s3.upload(params, function(err, data) {
+        if (err) {
+            reject(err);
+        } else {
+            resolve(data);
+        }
+    });
+  }));
 }
 
 module.exports = makeQRCode;
