@@ -10,29 +10,16 @@
 	<title>QRecruiter</title>
 
 	<style>
-		@import url('https://fonts.googleapis.com/css?family=Raleway');
-
-		body {
-			background-color: #303641;
-			margin: 0;
-			padding: 0;
-			font-family: 'Raleway', sans-serif;
-			color: #F2F2F2;
+		.column {
+			float: left;
+			width: 50%;
 		}
 
-		.container {
-			background-color: #1D1F20;
-			position: relative;
-			top: 20%;
-			margin: auto;
-			width: 340px;
-			border-radius: 0.35em;
-			box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-			text-align: center;
-		}
-
-		#list-item {
-			background: #d3d3d3;
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
 		}
 	</style>
 
@@ -61,34 +48,14 @@
 	</div>
 	<ui-view></ui-view>
 
-	<!--<span style="display: flex">
-		<div class="container">
-
-			<div id="title-block">
-				<p>Title</p>
-			</div>
-
-
-			<div id="list-item">
-				<p>List Item</p>
-			</div>
-
-
+	<!--<div class="row">
+		<div class="column">
+			<p>afasf</p>
 		</div>
-		<div class="container">
-
-			<div id="title-block">
-				<p>Title</p>
-			</div>
-
-
-			<div id="list-item">
-				<p>List Item</p>
-			</div>
-
-
+		<div class="column">
+			<p>Bye</p>
 		</div>
-	</span> -->
+	</div>-->
 
 
 </body>
