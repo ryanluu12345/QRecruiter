@@ -1,15 +1,15 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>QRecruiter - Login</title>
-    <meta name="description" content="Login">
-    <meta name="author" content="Lorenzo Angelino aka MrLolok">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Raleway');
+  <meta charset="UTF-8">
+  <title>QRecruiter - Login</title>
+  <meta name="description" content="Login">
+  <meta name="author" content="Lorenzo Angelino aka MrLolok">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway');
 		body {
 			background-color: #303641;
 		    margin: 0;
@@ -193,50 +193,51 @@
 </head>
 
 <body>
-	<div ng-controller="LoginCtrl">
+  <div ng-controller="LoginCtrl">
     <div id="container-login">
-        <div id="title">
-            <i class="material-icons lock">lock</i> Login
+      <div id="title">
+        <i class="material-icons lock">lock</i> Login
+      </div>
+
+      <form>
+        <div class="input">
+          <div class="input-addon">
+            <i class="material-icons">face</i>
+          </div>
+          <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off" ng-model="username">
         </div>
 
-        <form>
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">face</i>
-                </div>
-                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off" ng-model="username">
-            </div>
+        <div class="clearfix"></div>
 
-            <div class="clearfix"></div>
-
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">vpn_key</i>
-                </div>
-                <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off" ng-model="password">
-            </div>
-
-            <div class="remember-me">
-                <input type="checkbox">
-                <span style="color: #DDD">Remember Me</span>
-            </div>
-
-            <input type="submit" value="Log In" />
-        </form>
-
-        <div class="forgot-password">
-            <a href="#">Forgot your password?</a>
-        </div>
-        <div class="privacy">
-            <a href="#">Privacy Policy</a>
+        <div class="input">
+          <div class="input-addon">
+            <i class="material-icons">vpn_key</i>
+          </div>
+          <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off"
+            ng-model="password">
         </div>
 
-        <div class="register">
-            Don't have an account yet?
-            <a href="#"><button id="register-link">Register here</button></a>
+        <div class="remember-me">
+          <input type="checkbox">
+          <span style="color: #DDD">Remember Me</span>
         </div>
+
+        <input type="submit" value="Log In" />
+      </form>
+
+      <div class="forgot-password">
+        <a href="#">Forgot your password?</a>
+      </div>
+      <div class="privacy">
+        <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="register">
+        Don't have an account yet?
+        <button ng-click="goToSignup()" id="register-link">Register here</button>
+      </div>
     </div>
-    </div>
+  </div>
 </body>
 
 </html>

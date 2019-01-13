@@ -147,16 +147,24 @@ function($scope, $location, UserService){
       });
   }
 
+  $scope.goToLogin = function() {
+    $location.url('/login')
+  }
+
 }]);    
 
 /* Controller for the login page */
-app.controller('LoginCtrl', ['$scope', 'UserService', function($scope, UserService){
+app.controller('LoginCtrl', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
   $scope.username = null;
-  $scope.pasword = null; 
+  $scope.password = null; 
   UserService.getUser()
     .success(function(data) {
       $scope.username = null;
     });
+  
+  $scope.goToSignup = function() {
+    $location.url('/signup');
+  }
 }]);   
 
 

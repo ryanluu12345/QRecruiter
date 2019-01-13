@@ -8,7 +8,7 @@ const RecruiterSchema = mongoose.Schema({
     },
     applicants: {
       type: Array,
-      default: ["5c39bac0720c503a1cc95acb", "5c39baef7d5cae050c7d6700", "5c3a22f70f08ab0cc4674ebd"],
+      default: ["5c3ab99cc09cd51a041ec464", "5c3ab99cc09cd51a041ec465", "5c3aba1d5a603020682aaa2c", "5c3aba1d5a603020682aaa2d"],
     },
   },
   frontendEngineering: {
@@ -18,7 +18,7 @@ const RecruiterSchema = mongoose.Schema({
     },
     applicants: {
       type: Array,
-      default: [],
+      default: ["5c3aba1d5a603020682aaa30"],
     },
   }
 });
