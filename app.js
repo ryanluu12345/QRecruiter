@@ -9,6 +9,7 @@ mongoose.connect('mongodb://admin:password12345@ds123173.mlab.com:23173/qrecruit
 
 var indexRouter = require('./server/routes/index');
 var usersRouter = require('./server/routes/users');
+var recruitersRouter = require('./server/routes/recruiters');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static('client'));
 
 /* API ROUTES */
 app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/recruiters',recruitersRouter);
 
 /* ENTRY POINT */
 app.use('/', indexRouter);
