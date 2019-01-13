@@ -1,13 +1,15 @@
-const accountSid = 'AC7af9b1a6b83c353bed3e1fd20bd77879';
+const accountSid ='AC5259d1c9f88aa9923dbefe95041c28ed';
 const authToken = process.env.TWILIO_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
+const twilioService = {}
+
 /*User just shared resume with recruiter*/
-$scope.sharedConfirmation = function(phone){
+twilioService.sharedConfirmation = function(phone){
 client.messages
   .create({
      body: 'Congratulations! You have just shared your resume.',
-     from: '(412) 467-0847 ',
+     from: '(626) 658-3288',
      to: phone
    })
   .then(message => console.log(message.sid))
@@ -15,11 +17,11 @@ client.messages
 }
 
 /*Recruiter got a confirmation*/
-$scope.receievedConfirmation = function(phone, user){
+twilioService.receievedConfirmation = function(phone, user){
 client.messages
   .create({
      body: 'You have just received a resume',
-     from: '(412) 467-0847 ',
+     from: '(626) 658-3288',
      to: phone
    })
   .then(message => console.log(message.sid))
@@ -27,11 +29,11 @@ client.messages
 }
 
 /*User just uploaded resume with service*/
-$scope.sendConfirmation = function(phone){
+twilioService.sendConfirmation = function(phone){
 client.messages
   .create({
-     body: 'Congratulations! You have just uploaded your resume.',
-     from: '(412) 467-0847 ',
+     body: 'Congratulations! You have just uploaded your resume and personal information.',
+     from: '(626) 658-3288',
      to: phone
    })
   .then(message => console.log(message.sid))
@@ -39,13 +41,15 @@ client.messages
 }
 
 /*User received QR code link*/
-$scope.getQR = function(phone, QR_link){
+twilioService.getQR = function(phone, QR_link){
 client.messages
   .create({
-     body: 'Here is your resume: '+ QR_link,
-     from: '(412) 467-0847 ',
+     body: 'Here is your QR_link: '+ QR_link,
+     from: '(626) 658-3288',
      to: phone
    })
   .then(message => console.log(message.sid))
   .done();
 }
+
+module.exports = twilioService;

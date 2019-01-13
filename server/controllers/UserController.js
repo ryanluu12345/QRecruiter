@@ -1,5 +1,6 @@
 var makeQR = require('../services/qr-service');
 const UserModel = require('../models/User');
+const twilioService = require('../services/twillio-services');
 
 const UserController = {}
 
@@ -25,6 +26,7 @@ UserController.createUser = function(name, password, email, phone, res) {
       new: true,
     })
     .then(newUser => {
+      twilioService.getQR(newUser.phone, newUser.qrLink);
       res.send(newUser);
     })
   })
@@ -44,6 +46,7 @@ UserController.updateProfile = function(userId, resume, picture, skills, availab
     new: true,
   })
   .then(data => {
+    twilioService.sendConfirmation(data.phone);
     res.send(data);
   })
   .catch(err => {
