@@ -3,12 +3,6 @@ const UserModel = require('../models/User');
 
 const RecruiterController = {}
 
-/*
-RecruiterModel.create({}).then(data=>{
-  return "yo";
-})
-*/
-
 RecruiterController.getAllForJob = function(job, res) {
   RecruiterModel
     .find({})
