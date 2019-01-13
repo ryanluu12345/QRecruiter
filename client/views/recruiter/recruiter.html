@@ -38,16 +38,16 @@
 <body>
 	<div ng-controller="RecruiterCtrl">
 
-		<span style="display: flex">
+		<span style="display: flex; flex-direction: row">
 			<div class="container">
 
 				<div id="title-block">
 					<p>BackEnd Positions</p>
 				</div>
 
-				<div ng-repeat="user in $scope.backend">
+				<div ng-if="backendApplicants !== null" ng-repeat="user in backendApplicants">
 					<div id="list-item">
-						<p>{{user.username}}</p>
+						<p>{{user.name}}</p>
 					</div>
 				</div>
 
@@ -58,9 +58,9 @@
 					<p>FrontEnd Positions</p>
 				</div>
 
-				<div ng-repeat="user in $scope.frontend">
+				<div ng-if="frontendApplicants !== null" ng-repeat="user in frontendApplicants">
 					<div id="list-item">
-						<p>{{user.username}}</p>
+						<p>{{user.name}}</p>
 					</div>
 				</div>
 

@@ -16,7 +16,9 @@ app
 
   function($http){
   
-    var usersRoute = '/api/v1/users';
+    const usersRoute = '/api/v1/users';
+    const recruitersRoute = '/api/v1/recruiters';
+
   
     return {
       getUser: function() {
@@ -39,6 +41,9 @@ app
           picture: picture,
           resume: resume,
         });
+      },
+      loadApplicantsForJob: function(job) {
+        return $http.get(recruitersRoute + '/getAllForJob/' + job);
       }
 
       /* Put the name of the functions on the left and define the functions on the right */
@@ -49,12 +54,21 @@ app
 
 /* Controller for the recruiter page */
 app.controller('RecruiterCtrl', ['$scope', 'UserService', function($scope, UserService){
-  $scope.location = null;
-  $scope.position = null;
-  UserService.getUser()
-    .success(function(data) {
-      $scope.user = "y";
-    });
+  $scope.frontendApplicants = null;
+  $scope.backendApplicants = null;
+
+  UserService.loadApplicantsForJob('backendEngineering')
+    .success(data => {
+      $scope.backendApplicants = data;
+      console.log($scope.backendApplicants);
+    })
+
+  UserService.loadApplicantsForJob('frontendEngineering')
+    .success(data => {
+      $scope.frontendApplicants = data;
+      console.log($scope.frontendApplicants);
+    })
+  
 }]);    
 
 /* Controller for the user page */
