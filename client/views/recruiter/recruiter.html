@@ -19,35 +19,69 @@
 		}
 
 		.container {
-			background-color: #FF5733;
-			position: relative;
+			background: #1A1C1D;
 			top: 20%;
 			margin: auto;
-			width: 340px;
+			width: 400px;
 			border-radius: 0.35em;
 			box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
 			text-align: center;
 		}
 
 		#list-item {
+			align-items: center;
+			border-radius: 0.25em;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			height: 100px;
+			margin: 10px;
 			background-color: #373b3d;
+		}
+
+		.user-picture {
+			margin: 0 10px;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			max-width: 100%;
+			max-height: 80%;
+		}
+
+		.username {
+			font-size: 30px;
+			margin: 0 10px;
+		}
+
+		.user-info {
+			margin-right: 10px;
+		}
+
+		.position-title {
+			font-size: 30px;
+			font-weight: bold
 		}
 	</style>
 </head>
 
 <body>
 	<div ng-controller="RecruiterCtrl">
-		<span style="display: flex; background: #33FFB5; vertical-align: text-top;">
+		<span style="display: flex; vertical-align: text-top;">
 
 			<div class="container">
 
 				<div id="title-block">
-					<p>BackEnd Positions</p>
+					<p class="position-title">BackEnd Positions</p>
 				</div>
 
 				<div ng-if="backendApplicants !== null" ng-repeat="user in backendApplicants">
 					<div id="list-item">
-						<p>{{user.name}}</p>
+						<img class="user-picture" src={{user.picture}} />
+						<div class="user-info">	
+							<p class="username">{{user.name}}</p>
+							<i>{{user.skills}}</i><br />
+							<a href={{user.resume}}>View Resume</a>
+						</div>
 					</div>
 				</div>
 
@@ -56,13 +90,18 @@
 			<div class="container">
 
 				<div id="title-block">
-					<p>FrontEnd Positions</p>
+					<p class="position-title">FrontEnd Positions</p>
 				</div>
 
 				<div ng-if="frontendApplicants !== null" ng-repeat="user in frontendApplicants">
-					<div id="list-item">
-						<p>{{user.name}}</p>
-					</div>
+						<div id="list-item">
+								<img class="user-picture" src={{user.picture}} />
+								<div class="user-info">	
+									<p class="username">{{user.name}}</p>
+									<i>{{user.skills}}</i><br />
+									<a href={{user.resume}}>View Resume</a>
+								</div>
+							</div>
 				</div>
 
 			</div>
